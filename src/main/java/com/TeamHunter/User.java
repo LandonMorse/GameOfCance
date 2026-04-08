@@ -41,7 +41,12 @@ public double getWallet() {
 
 public void makebet(double bet) {
 	try {
-		this.wallet -= bet;
+		if (bet <= this.wallet) {
+			this.wallet -= bet;
+		} else {
+			System.out.println("noy enghouf moeny ");
+		}
+		
 	} catch(Exception e) {
 	System.out.print("make your bet");
 	}

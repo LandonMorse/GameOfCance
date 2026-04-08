@@ -1,4 +1,5 @@
 package com.TeamHunter;
+
 import java.util.Random;
 import java.util.random.*;
 import java.util.Scanner;
@@ -32,6 +33,22 @@ public class Slots {
 		this.num3 = random.nextInt(16);
 	}
 	public void spin(int num1 , int num2, int num3) {
+		System.out.println("current Amount "+"$" + UserManager.userSet().getWallet());
+		Scanner scan = new Scanner(System.in);
+		double j = scan.nextDouble();
+		
+		UserManager.userSet().makebet( j);
+		System.out.println("$" + UserManager.userSet().getWallet());
+		if (num1 == num2 || num1 == num3 || num2 == num3) {
+			UserManager.userSet().addfunds(j * 1.5);
+		}
+		if (num1 == num2 && num2 == num3 && num1 == num3) {
+			UserManager.userSet().addfunds(j * 2);
+		}
+		if (UserManager.userSet().getWallet() <= 0 ) {
+			System.exit(0);
+		}
+		System.out.println("$" + UserManager.userSet().getWallet());
 		for (int i = 1; i <=3;i++) {
 			if (i == 1) {
 				if (num1 == 0) {
@@ -190,12 +207,12 @@ public class Slots {
 		randomNum();
 		spin(this.num1,this.num2,this.num3);
 	}
-public void bet(double bet) {
-		Scanner one = new Scanner(System.in);
-		try {
-		//User user = new User();
-		bet = one.nextDouble();
+public static void betSlots(double bet) {
 		
+		try {
+			
+		UserManager.userSet().makebet(bet);
+			
 		} catch (Exception e){
 			System.out.println(" not valid number ");
 		}
