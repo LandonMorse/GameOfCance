@@ -217,4 +217,22 @@ public static void betSlots(double bet) {
 			System.out.println(" not valid number ");
 		}
 }
+public void slotsFuncDone() {
+	Scanner scan = new Scanner(System.in);
+	System.out.println("give your name: ");
+	String name = scan.nextLine();
+	System.out.println("give Your age: ");
+	
+	int age = scan.nextInt();
+	User user = new User(name,age,100);
+	UserManager.addUser(user);
+	while (true) {
+		System.out.println("amount to bet: ");
+//	Slots.betSlots(scan.nextDouble());
+	Slots slots = new Slots();
+}
+	
+
+	
+}
 }
